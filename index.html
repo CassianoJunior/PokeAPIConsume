@@ -8,8 +8,8 @@
   
   <title>AJAX Application</title>
 </head>
-<body class="bg-[#222422] h-screen flex flex-col items-center justify-center">
-  <div class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-none w-full px-32">
+<body class="bg-[#222422] h-screen flex flex-col items-center justify-center overflow-y-scroll py-16">
+  <div class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-none w-full px-32 py-16">
     <section class="flex flex-col items-center justify-center gap-4 w-full">
       <div class="flex flex-col items-center justify-center gap-4 w-full">
         <h1 class="text-white font-bold text-2xl mb-4">PokeAPI consume</h1>
@@ -33,24 +33,26 @@
         <div class="flex gap-4 justify-center items-center">
           <p class="text-white text-sm">Type the name of pokemon in english</p>
           <select onchange="handleSelect()" id="select" class="text-white bg-[#121212] outline-none">
-            <option>Examples</option>
-            <option>Pikachu</option>
-            <option>Bulbasaur</option>
-            <option>Charizard</option>
-            <option>Charmander</option>
-            <option>Pidgey</option>
-            <option>Snorlax</option>
-            <option>Dragonite</option>
-            <option>Flygon</option>
-            <option>Squirtle</option>
+            <option onclick="handleSelect()">Examples</option>
+            <option onclick="handleSelect()">Pikachu</option>
+            <option onclick="handleSelect()">Bulbasaur</option>
+            <option onclick="handleSelect()">Charizard</option>
+            <option onclick="handleSelect()">Charmander</option>
+            <option onclick="handleSelect()">Pidgey</option>
+            <option onclick="handleSelect()">Snorlax</option>
+            <option onclick="handleSelect()">Dragonite</option>
+            <option onclick="handleSelect()">Flygon</option>
+            <option onclick="handleSelect()">Squirtle</option>
           </select>
         </div>
       </div>    
-      <div id="data" class="flex flex-col items-center justify-center gap-2 p-8 w-3/4 text-white mt-8"></div>
+      <div id="loading"></div>
     </section>
-  
-    <section id="sametype-section" class="flex flex-col items-center justify-center h-screen hidden">
-      <h1 class="text-white font-bold text-2xl mb-4">More from same type</h1>
+    
+    <section id="sametype-section" class="flex flex-col items-center w-full justify-center h-screen hidden">
+      <h2 class="text-white font-bold text-2xl mb-4">Pokemon</h1>
+      <div id="data" class="flex flex-col items-center justify-center gap-2 p-8 w-3/4 text-white mb-8"></div>
+      <h2 class="text-white font-bold text-2xl mb-4">More from same type</h1>
       <div id="sametype-div"></div>
     </section>
   </div>

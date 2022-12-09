@@ -6,9 +6,9 @@ const getPokemonTypesFormatted = (arrayTypes) => {
   let str = '';
   types.forEach((type, index) => {
     if (index < types.length - 1) {
-      str += type + ', ';
+      str += type[0].toUpperCase() + type.substr(1) + ', ';
     } else {
-      str += type;
+      str += type[0].toUpperCase() + type.substr(1);
     }
   });
   return str;
@@ -19,6 +19,7 @@ const handleSelect = () => {
   const option = select.options[select.selectedIndex];
 
   const input = document.getElementById('search');
+  if (option.value.toLowerCase() === 'examples') return;
   input.value = option.value;
   search();
 };
@@ -124,8 +125,8 @@ const search = () => {
   httpRequest.addEventListener('readystatechange', () => {
     if (httpRequest.status === 404) {
       pokemonInput.value = '';
-      const divData = document.getElementById('data');
-      divData.innerHTML = `
+      const divLoading = document.getElementById('loading');
+      divLoading.innerHTML = `
         <div class="flex gap-2 items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 256 256" xml:space="preserve">
 
@@ -223,8 +224,8 @@ const search = () => {
         }
       });
     } else {
-      const divData = document.getElementById('data');
-      divData.innerHTML = `
+      const divLoading = document.getElementById('loading');
+      divLoading.innerHTML = `
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
         <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="32" height="32" viewBox="0 0 128 128" xml:space="preserve">
@@ -238,6 +239,9 @@ const search = () => {
           </g>
         </svg>
       `;
+      setTimeout(() => {
+        divLoading.innerHTML = '';
+      }, 1100);
     }
   });
 };
