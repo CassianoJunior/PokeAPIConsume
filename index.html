@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <title>AJAX Application</title>
+</head>
+<body class="bg-[#222422] h-screen flex flex-col items-center justify-center">
+  <div class="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-none w-full px-32">
+    <section class="flex flex-col items-center justify-center gap-4 w-full">
+      <div class="flex flex-col items-center justify-center gap-4 w-full">
+        <h1 class="text-white font-bold text-2xl mb-4">PokeAPI consume</h1>
+        <div>
+          <input type="text" id="search" placeholder="Type a pokemon name..." 
+            class="
+              px-4
+              py-2
+              bg-transparent 
+              outline-none 
+              border-2
+              border-b-gray-300 
+              focus:border-[#81D8F7]
+              transition-colors
+              text-white
+              rounded-lg
+            "
+          />
+          <button id="button-search" class="bg-[#81D8F7] rounded-lg px-4 py-2 hover:bg-[#71D0F0]" onclick="search()">Search</button>
+        </div>
+        <div class="flex gap-4 justify-center items-center">
+          <p class="text-white text-sm">Type the name of pokemon in english</p>
+          <select onchange="handleSelect()" id="select" class="text-white bg-[#121212] outline-none">
+            <option>Examples</option>
+            <option>Pikachu</option>
+            <option>Bulbasaur</option>
+            <option>Charizard</option>
+            <option>Charmander</option>
+            <option>Pidgey</option>
+            <option>Snorlax</option>
+            <option>Dragonite</option>
+            <option>Flygon</option>
+            <option>Squirtle</option>
+          </select>
+        </div>
+      </div>    
+      <div id="data" class="flex flex-col items-center justify-center gap-2 p-8 w-3/4 text-white mt-8"></div>
+    </section>
+  
+    <section id="sametype-section" class="flex flex-col items-center justify-center h-screen hidden">
+      <h1 class="text-white font-bold text-2xl mb-4">More from same type</h1>
+      <div id="sametype-div"></div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
