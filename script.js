@@ -108,7 +108,28 @@ const formatResponseSameTypePokemons = async (responses, name) => {
   });
 };
 
+const showLoading = () => {
+  const divLoading = document.getElementById('loading');
+  divLoading.innerHTML = `
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="32" height="32" viewBox="0 0 128 128" xml:space="preserve">
+      <g>
+        <circle fill="#409ecd" cx="64.125" cy="64.125" r="12.031"/>
+        <animate attributeName="opacity" dur="1000ms" begin="0s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0;1;0"/>
+      </g>
+      <g>
+        <path fill="#409ecd" fill-rule="evenodd" d="M64,0A64,64,0,1,1,0,64,64,64,0,0,1,64,0Zm0,19.538A44.462,44.462,0,1,1,19.538,64,44.462,44.462,0,0,1,64,19.538Z"/>
+        <animate attributeName="opacity" dur="1000ms" begin="0s" repeatCount="indefinite" keyTimes="0;0.5;1" values="1;0;1"/>
+      </g>
+    </svg>
+  `;
+
+  return divLoading;
+};
+
 const search = () => {
+  showLoading();
   const divSameTypePokemons = document.getElementById('sametype-div');
   const sectionSameTypePokemons = document.getElementById('sametype-section');
   divSameTypePokemons.innerHTML = '';
@@ -224,21 +245,7 @@ const search = () => {
         }
       });
     } else {
-      const divLoading = document.getElementById('loading');
-      divLoading.innerHTML = `
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-        <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="32" height="32" viewBox="0 0 128 128" xml:space="preserve">
-          <g>
-            <circle fill="#409ecd" cx="64.125" cy="64.125" r="12.031"/>
-            <animate attributeName="opacity" dur="1000ms" begin="0s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0;1;0"/>
-          </g>
-          <g>
-            <path fill="#409ecd" fill-rule="evenodd" d="M64,0A64,64,0,1,1,0,64,64,64,0,0,1,64,0Zm0,19.538A44.462,44.462,0,1,1,19.538,64,44.462,44.462,0,0,1,64,19.538Z"/>
-            <animate attributeName="opacity" dur="1000ms" begin="0s" repeatCount="indefinite" keyTimes="0;0.5;1" values="1;0;1"/>
-          </g>
-        </svg>
-      `;
+      const divLoading = showLoading();
       setTimeout(() => {
         divLoading.innerHTML = '';
       }, 1100);
